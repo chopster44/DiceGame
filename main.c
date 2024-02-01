@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "login.h"
 
 void randomNumber() {
   int rand = random();
@@ -8,12 +9,10 @@ void randomNumber() {
 }
 
 int main(int argc, char *argv[]) {
-  char* ptr = malloc(sizeof(char) * 10);
-  printf("Enter up to 10 chars");
-  scanf("%s", ptr);
-  printf("%s \n", ptr);
-  printf("Hello, World!");
-  free(ptr);
-  randomNumber();
+  printf("Users: ");
+  for (int i = 0; i < (sizeof(users) / sizeof(users[0])); i++) {
+    printf("%s \t", users[i]);
+  }
+  printf("\n");
   return 0;
 }

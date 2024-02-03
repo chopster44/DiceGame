@@ -1,4 +1,4 @@
-#ifndef LOGIN 
+#ifndef LOGIN
 #define LOGIN
 
 int verifyUser(char *name);

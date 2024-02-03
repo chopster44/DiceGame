@@ -1,18 +1,18 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
 #include "login.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 char *users[5] = {"Osc", "Set", "Adi", "Arc", "Dan"};
 
 int verifyUser(char *name) {
-	for (int i = 0; i < 5; i++) {
-		char *nameChecked = users[i];
-		if (!strcmp(name, nameChecked)) {
-			return 1;
-		}
-	}
-	return 0;
+  for (int i = 0; i < 5; i++) {
+    char *nameChecked = users[i];
+    if (!strcmp(name, nameChecked)) {
+      return 1;
+    }
+  }
+  return 0;
 }
 
 void login(int playerNum, char *players[]) {
@@ -29,6 +29,3 @@ void login(int playerNum, char *players[]) {
     return;
   }
 }
-
-
-

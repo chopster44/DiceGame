@@ -1,9 +1,15 @@
-build: src/main.c 
-	clang src/main.c -o dice.out -lsrc
+CC = clang
+BIN = bin
+SRC = $(wildcard src/*.c)
+OBJ = $(SRC:.c=.o)
 
-run: src/main.c 
-	clang src/main.c -o dice.out -lsrc
-	./dice.out 
+all: clean build
+
+build: $(OBJ)
+	$(CC) -o $(BIN)/dice $^ 
+
+run: all 
+	$(BIN)/dice 
 
 clean:
-	rm dice.out
+	rm $(BIN)/dice

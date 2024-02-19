@@ -1,14 +1,8 @@
 #include "login.h"
+#include "random.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-void randomNumber()
-{
-    int rand = random();
-    printf("%d\n", rand);
-    return;
-}
 
 void cls() { system("clear"); }
 
@@ -46,6 +40,29 @@ begin:
     }
 game:
     cls();
+    // game loop
+    int *rolls[2] = {malloc(sizeof(int)), malloc(sizeof(int))};
+    *rolls[0] = 0;
+    *rolls[1] = 0;
+    for (int i = 1; i < 6; i++) {
+        printf("Round %d:\n:", i);
+        *rolls[0] = randomNumber();
+        score[0] += *rolls[0];
+        printf("Player 1 rolled a %d\n", *rolls[0]);
+        *rolls[1] = randomNumber();
+        score[1] += *rolls[1];
+        printf("Player 2 rolled a %d\n", *rolls[1]);
+        if (*rolls[0] > *rolls[1]) {
+            printf("Player 1 won!\n");
+        } else if (*rolls[0] == *rolls[1]) {
+            printf("It was a draw!\n");
+        } else {
+            printf("Player 2 won\n");
+        }
+        printf("Press enter to continue:");
+        char *temp = "";
+        scanf("%s", temp);
+    }
     // player 1 roll
     free(temp);
     free(players[0]);

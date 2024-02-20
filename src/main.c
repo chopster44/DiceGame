@@ -1,5 +1,5 @@
 #include "login.h"
-#include "random.h"
+#include "gameplay.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -59,13 +59,23 @@ game:
         } else {
             printf("Player 2 won\n");
         }
-        printf("Press enter to continue:");
-        char *temp = "";
+        printf("Continue? [y/n]:");
+        char *temp = malloc(sizeof(char));
         scanf("%s", temp);
+        if (!strcmp(temp, "y")) {
+            free(temp);
+            continue;
+        } else {
+            printf("Quitting");
+            return 0;
+        }
     }
-    // player 1 roll
+finish: 
+
     free(temp);
     free(players[0]);
     free(players[1]);
+    free(score[0]);
+    free(score[1]);
     return 0;
 }

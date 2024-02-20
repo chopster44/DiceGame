@@ -1,4 +1,4 @@
-#include "random.h"
+#include "gameplay.h"
 #include <stdlib.h>
 
 int randomNumber() {

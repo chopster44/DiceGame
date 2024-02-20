@@ -13,3 +13,7 @@ run: all
 
 clean:
 	rm $(BIN)/dice
+	rm src/*.o
+
+init:
+	mkdir -p $(BIN)

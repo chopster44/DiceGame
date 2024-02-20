@@ -1,7 +1,7 @@
-#ifndef RANDOM
-#define RANDOM
+#ifndef GAME 
+#define GAME 
 
-int randomNumber();
-int generateScore();
+int randomNumber(int maxInt);
+int calculateScore(int *rawScore);
 
 #endif

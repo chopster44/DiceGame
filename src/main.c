@@ -42,16 +42,19 @@ game:
     cls();
     // game loop
     int *rolls[2] = {malloc(sizeof(int)), malloc(sizeof(int))};
+    int *tempInt = malloc(sizeof(int));
     *rolls[0] = 0;
     *rolls[1] = 0;
     for (int i = 1; i < 6; i++) {
         printf("Round %d:\n:", i);
-        *rolls[0] = randomNumber();
-        score[0] += *rolls[0];
-        printf("Player 1 rolled a %d\n", *rolls[0]);
-        *rolls[1] = randomNumber();
-        score[1] += *rolls[1];
-        printf("Player 2 rolled a %d\n", *rolls[1]);
+        *rolls[0] = randomNumber(6);
+        *tempInt = calculateScore(rolls[0]);
+        *score[0] += *tempInt;
+        printf("Player 1 rolled a %d, scoring %d\n", *rolls[0], *tempInt);
+        *rolls[1] = randomNumber(6);
+        *tempInt = calculateScore(rolls[1]);
+        *score[1] += *rolls[1];
+        printf("Player 2 rolled a %d, scoring %d\n", *rolls[1], *tempInt);
         if (*rolls[0] > *rolls[1]) {
             printf("Player 1 won!\n");
         } else if (*rolls[0] == *rolls[1]) {
@@ -67,11 +70,11 @@ game:
             continue;
         } else {
             printf("Quitting");
-            return 0;
+            goto finish; 
         }
     }
 finish: 
-
+    printf("Player 1 scored %d and Player 2 scored %d\n Quitting", *score[0], *score[1]);
     free(temp);
     free(players[0]);
     free(players[1]);
